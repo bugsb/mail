@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+
+<div class="container my-4 px-4">
+    <form action="/app/compose/{{user.email}}" method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        
+        <div class="form-group">
+          <label for="exampleFormControlInput1">To:</label>
+          <input type="email" name="receiver" class="form-control" id="exampleFormControlInput1" value="{{receiver}}" >
+        </div>
+       
+        <div class="form-group" >
+            <label for="exampleFormControlInput1">Subject:</label>
+            <input type="text" name="sub" class="form-control" id="exampleFormControlInput1" value="{{sub}}" >
+          </div>
+          <div class="container mb-2 pb-1 ">
+            <label class="form-label px-2" for="customFile">Add Attachment</label>
+          <input type="file" class="form-control form-control-sm" value="{{file.url}}" name="file" id="customFile" />
+          </div>
+
+        <div class="form-group">
+            
+          <label for="exampleFormControlTextarea1"  >Body</label>
+          <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3">{{body}}</textarea>
+        </div>
+        <input type="submit" name="send" class="btn btn-primary" value="Send"></button>
+    
+ <input type="submit" name="save" formaction="/app/save/{{user.email}}" class="btn btn-success float-right" value="Save"></button>
+      
+</form>
+        
+       
+
+      
+</div>
+
+{% endblock body%}

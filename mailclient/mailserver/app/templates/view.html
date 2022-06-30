@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+
+<div class="container " style="margin-top: 10vh;">
+    <div class="card text-center">
+        <div class="card-header">
+            <h4>        <strong>Sub:</strong>    {{sub}}            </h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> <strong> From: </strong> {{sender}}</h5>
+          <p class="card-text"> <strong>Body:</strong> {{body}}</p>
+         {% if file %}
+          <div class="card">
+  <div class="card-body">
+  <strong>File: </strong> <a href= "{{file.url}}">Attachment</a>
+  </div>
+</div>
+{% endif %}
+          <div class="container mt-5 pt-5">
+          {% if not is_draft %}
+            <a href="/app/replay/{{mid}}" class="btn btn-primary float-left">Replay</a>
+             <a href="/app/forward/{{mid}}" class="btn btn-warning float-right">Forward</a>
+            {% endif %}
+            <a href="/app/delete/{{mid}}/{{coming_from}}" class="btn btn-danger ">Delete</a>
+            {% if is_draft %}
+            <a href="/app/send_draft/{{mid}}" class="btn btn-info float-right">send </a>
+           {% endif %}
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          {{date}}
+        </div>
+      </div>
+</div>
+{% endblock %}

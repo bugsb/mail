@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+
+{% for mail in data %}
+
+<div class="container my-5"  >
+    <div class="list-group">
+        <div class="list-group-item list-group-item-action" mx-4 py 10> <b>{{ mail.sender }}</b> - {{ mail.sub }}
+          <a class="btn btn-outline-danger float-right mx-2" href="/app/delete/{{mail.id}}/inbox" role="button">Delete</a>
+          <a class="btn btn-outline-warning float-right mx-2" href="/app/forward/{{mail.id}}" role="button">Forward</a>
+          <a class="btn btn-outline-success float-right mx-2" href="/app/replay/{{mail.id}}" role="button">Replay</a>
+          <a class="btn btn-outline-primary float-right mx-2" href="/app/view/{{mail.id}}/inbox" role="button">View</a>
+          
+
+          </div>
+      </div>
+</div>
+{% endfor %}
+{% endblock body%}
